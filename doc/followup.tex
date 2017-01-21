@@ -1,0 +1,110 @@
+\documentclass[onecolumn]{aastex61}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{lineno}
+\usepackage{color}
+\linenumbers
+
+\begin{document}
+
+\title{DESI Observations of Type Ia Supernovae Discovered by Imaging Surveys}
+
+\begin{abstract}
+The DESI survey will be operational concurrently with imaging surveys such as ZTF and LSST.  These imaging surveys are more
+efficient than DESI in discovering transients due to both higher survey solid-angle coverage and cadence.  Imaging surveys, however,
+do not provide accurate classification nor redshifts: features that a spectroscopic instrument such as DESI can provide. The DESI Time Domain
+Working Group is therefore determining the potential science yield of a joint DESI--imaging Type~Ia supernova (SN~Ia) program.
+\end{abstract}
+
+\section{Fiducial Imaging Survey Plus DESI Program}
+Let us consider what happens to one supernova. The supernova is characterized by its intrinsic properties (for example, light-curve
+shape, color), its redshift, and is associated with a host galaxy.  It explodes on some observer-frame date $t_0$, and has
+an average incident flux of $m_X(t)$ through filter $X$ that gets to the observer. 
+
+An imaging survey takes $N$ observations covering the position of the supernova, at times $t_i$ and filters $X_i$, where $i$ is the observation index.
+Transients are searched for in these images, so that the supernova has an opportunity of being detected.
+To first order, the probability of detecting a supernova
+in observation $i$ is a function of the supernova magnitude  $\epsilon_i(m_{X_i}(t_i))$.  The probability of supernova
+discovery using a single detection is
+\begin{equation}
+\epsilon^D = 1- \sum_{i=1}^{N} \left(1-\epsilon_i(m_{X_i}(t_i))\right),
+\end{equation}
+where the sum is over all $N$ observations.  If  multiple detections are required for discovery, the efficiency is the sum of all
+combinations of detections that allow for discovery.
+If the supernova is indeed discovered, the date of discovery $t_D$ is stochastic.  
+ 
+The imaging survey produces light curves of the supernova, from which (together with redshift) its distance can be determined with precision $\sigma_\mu$.
+A poor distance determination occurs if the imaging survey does not observe the rise or fall of the supernova.  Therefore,
+the supernova is of interest only if its date of explosion $t_0$ occurs from shortly before sky monitoring, to $\sim 2$ supernova-frame months
+before the end of the monitoring. 
+ 
+If the supernova is discovered, there is an opportunity for its targeted DESI observation, and/or the targeted
+observation of its host galaxy when the transient light has faded away.  
+The decision to allocate a DESI fiber on the supernova will be partially based on available information. The available
+information for the supernova are be coordinates, current magnitudes, and possibly a metric of transient type.
+Information on the purported host are coordinates, magnitudes and possibly a photometric redshift.  
+The probability that the supernova gets a DESI observation is $\epsilon^{ST}$, and the probability that there is a  spectrum of the host
+after the supernova has faded is $\epsilon^{SH}$.
+
+On a particular date of observation,
+DESI has some efficiency of determining the supernova type  $\epsilon^T$ and/or host redshift $\epsilon^z$. 
+Generally the spectroscopic redshift uncertainty is sufficiently small to render it irrelevant
+for cosmology analysis, and so a successful typing implies a successful redshift.
+
+The probability that the supernova enters a cosmological analysis of spectroscopically confirmed supernova is then
+\begin{equation}
+\epsilon = \epsilon^D \epsilon^{ST} \epsilon^T,
+\end{equation}
+and the supernova will have an distance precision of $\sigma_\mu$.
+
+Given a population of supernovae in the universe, we can realize a subset of supernovae that are used in the cosmological analysis.
+Figure of merits can be calculated.
+
+\section{Ingredients}
+
+
+
+
+Often, the supernova discovery conditions are sufficiently demanding so that if discovered, then
+$\sigma_\mu$ is
+dominated by the $\sim 0.12$ mag intrinsic dispersion, rather than measurement uncertainties.
+
+
+\section{Elements Needed to Determine Science Impact}
+Determination of the science yield of a  joint DESI--imaging program can be broken up into conceptually distinct components.
+\begin{itemize}
+\item Anticipated transient/SN~Ia yield of imaging surveys.
+
+The efficiency of supernova discovery.  The ``average''  supernova at redshift $z$ has light curves $m_X(p;z)$ in filters $X$.  An average supernova
+ that explodes at time $t_0$ has  light curves
+$m_X(t-t_0; z)$. To first order, the probability of discovering a supernova
+in observation $i$ in filter $X_i$ at time $t_i$ is a function of the supernova magnitude  $\epsilon_i(m_{X_i}(t_i-t_0;z))$.  The probability of supernova
+discovery is
+\begin{equation}
+\epsilon(z, t_0) = 1- \sum_{i=1}^{N} \left(1-\epsilon_i(m_{X_i}(t_i-t_0;z))\right),
+\end{equation}
+where the sum is over all $N$ observations.
+
+The number of supernova discoveries.
+The supernova rate is expressed as
+\begin{equation}
+r(z) = \frac{dN}{d\Omega dz dt}.
+\end{equation}
+The expected number of supernova discoveries is then
+\begin{equation}
+ \frac{dN^{D}}{d\Omega dz} = \int_{-\infty}^{\infty} dt_0\, r(z) \epsilon(z, t_0).
+\end{equation}
+
+
+
+
+\item Effectiveness of DESI to classify a transient and its redshift, either from the transient or host galaxy.
+\item Cosmology Figure of Merit for a set of SNe~Ia with classification, redshift, and imaging-survey photometry.
+\item Determination of feasible DESI observing strategy and imaging surveys that optimize Cosmology Figure of Merit 
+\end{itemize}
+
+\end{document} 
