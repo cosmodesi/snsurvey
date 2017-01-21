@@ -7,6 +7,7 @@
 \usepackage{natbib}
 \usepackage{lineno}
 \usepackage{color}
+\usepackage{hyperref}
 \linenumbers
 
 \begin{document}
@@ -65,46 +66,69 @@ Given a population of supernovae in the universe, we can realize a subset of sup
 Figure of merits can be calculated.
 
 \section{Ingredients}
+This Section picks out the ingredients necessary for the analysis, and fiducial choices for those ingredients.
+
+Supernova coordinates:  Using the rate from Rodney et al (2014),  we realize the $t_0$, $z$, RA and Dec.\ of a supernova.
+
+SN~Ia properties: The supernova is modeled as a SALT2 object.  Given input $t_0$, $z$, we realize a SALT2 supernova,
+which can be queried for its observed magnitudes $m_X(t)$.
+
+Survey: The survey is characterized by the set of observations that cover the supernova.  Each observation as a date, filter, and detection efficiency.
+We consider a simpified LSST survey, as characterized by Table 1 of  \url{https://arxiv.org/pdf/0805.2366.pdf}.  The detection efficiency
+is $\epsilon_i(m_{X_i} \le m_{X, lim}) = 1$,   $\epsilon_i(m_{X_i} > m_{X, lim})=0$, where $m_{X,lim}$ is the $5\sigma$ single-visit limiting
+magnitude.  The dates of observations cycle over the bands with a cadence of two days.
+
+Discovery: One observation of $7\sigma$.  We realize whether the supernova is discovered and if so on what date $t_D$.
+
+Using an ensemble of supernovae, we can at this point determine discovery efficiency as a function of redshift $\epsilon^D(z)$ and
+the distribution of the phase of discovery $(t_D-t_0)(z)$.
+
+DESI spectroscopic followup: Optimization of the DESI follow-up strategy is an objective of this work. 
+ I think (?) that the DESI will cover its footprint
+twice in a season, meaning each year there are two possible dates of observation.
+For the moment, we can assume
+the supernovae get a spectrum if it is located in an area covered by DESI $\epsilon^{ST}=1$. 
+
+Spectroscopic success: 
 
 
-
-
-Often, the supernova discovery conditions are sufficiently demanding so that if discovered, then
-$\sigma_\mu$ is
-dominated by the $\sim 0.12$ mag intrinsic dispersion, rather than measurement uncertainties.
-
-
-\section{Elements Needed to Determine Science Impact}
-Determination of the science yield of a  joint DESI--imaging program can be broken up into conceptually distinct components.
-\begin{itemize}
-\item Anticipated transient/SN~Ia yield of imaging surveys.
-
-The efficiency of supernova discovery.  The ``average''  supernova at redshift $z$ has light curves $m_X(p;z)$ in filters $X$.  An average supernova
- that explodes at time $t_0$ has  light curves
-$m_X(t-t_0; z)$. To first order, the probability of discovering a supernova
-in observation $i$ in filter $X_i$ at time $t_i$ is a function of the supernova magnitude  $\epsilon_i(m_{X_i}(t_i-t_0;z))$.  The probability of supernova
-discovery is
-\begin{equation}
-\epsilon(z, t_0) = 1- \sum_{i=1}^{N} \left(1-\epsilon_i(m_{X_i}(t_i-t_0;z))\right),
-\end{equation}
-where the sum is over all $N$ observations.
-
-The number of supernova discoveries.
-The supernova rate is expressed as
-\begin{equation}
-r(z) = \frac{dN}{d\Omega dz dt}.
-\end{equation}
-The expected number of supernova discoveries is then
-\begin{equation}
- \frac{dN^{D}}{d\Omega dz} = \int_{-\infty}^{\infty} dt_0\, r(z) \epsilon(z, t_0).
-\end{equation}
-
-
-
-
-\item Effectiveness of DESI to classify a transient and its redshift, either from the transient or host galaxy.
-\item Cosmology Figure of Merit for a set of SNe~Ia with classification, redshift, and imaging-survey photometry.
-\item Determination of feasible DESI observing strategy and imaging surveys that optimize Cosmology Figure of Merit 
-\end{itemize}
+%
+%Often, the supernova discovery conditions are sufficiently demanding so that if discovered, then
+%$\sigma_\mu$ is
+%dominated by the $\sim 0.12$ mag intrinsic dispersion, rather than measurement uncertainties.
+%
+%
+%\section{Elements Needed to Determine Science Impact}
+%Determination of the science yield of a  joint DESI--imaging program can be broken up into conceptually distinct components.
+%\begin{itemize}
+%\item Anticipated transient/SN~Ia yield of imaging surveys.
+%
+%The efficiency of supernova discovery.  The ``average''  supernova at redshift $z$ has light curves $m_X(p;z)$ in filters $X$.  An average supernova
+% that explodes at time $t_0$ has  light curves
+%$m_X(t-t_0; z)$. To first order, the probability of discovering a supernova
+%in observation $i$ in filter $X_i$ at time $t_i$ is a function of the supernova magnitude  $\epsilon_i(m_{X_i}(t_i-t_0;z))$.  The probability of supernova
+%discovery is
+%\begin{equation}
+%\epsilon(z, t_0) = 1- \sum_{i=1}^{N} \left(1-\epsilon_i(m_{X_i}(t_i-t_0;z))\right),
+%\end{equation}
+%where the sum is over all $N$ observations.
+%
+%The number of supernova discoveries.
+%The supernova rate is expressed as
+%\begin{equation}
+%r(z) = \frac{dN}{d\Omega dz dt}.
+%\end{equation}
+%The expected number of supernova discoveries is then
+%\begin{equation}
+% \frac{dN^{D}}{d\Omega dz} = \int_{-\infty}^{\infty} dt_0\, r(z) \epsilon(z, t_0).
+%\end{equation}
+%
+%
+%
+%
+%\item Effectiveness of DESI to classify a transient and its redshift, either from the transient or host galaxy.
+%\item Cosmology Figure of Merit for a set of SNe~Ia with classification, redshift, and imaging-survey photometry.
+%\item Determination of feasible DESI observing strategy and imaging surveys that optimize Cosmology Figure of Merit 
+%\end{itemize}
 
 \end{document} 
