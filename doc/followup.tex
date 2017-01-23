@@ -15,22 +15,22 @@
 \title{DESI Observations of Type Ia Supernovae Discovered by Imaging Surveys}
 
 \begin{abstract}
-The DESI survey will be operational concurrently with imaging surveys such as ZTF and LSST.  These imaging surveys are more
-efficient than DESI in discovering transients due to both higher survey solid-angle coverage and cadence.  Imaging surveys, however,
-do not provide accurate classification nor redshifts: features that a spectroscopic instrument such as DESI can provide. The DESI Time Domain
+The DESI survey will be operational concurrently with imaging surveys such as ZTF and LSST.  Due to both higher survey solid-angle coverage and cadence, these imaging surveys are more
+efficient than DESI in discovering transients.  Imaging surveys, however,
+do not provide accurate classification nor redshifts: information that a spectroscopic instrument such as DESI can provide. The DESI Time Domain
 Working Group is therefore determining the potential science yield of a joint DESI--imaging Type~Ia supernova (SN~Ia) program.
 \end{abstract}
 
 \section{Fiducial Imaging Survey Plus DESI Program}
 Let us consider what happens to one supernova. The supernova is characterized by its intrinsic properties (for example, light-curve
 shape, color), its redshift, and is associated with a host galaxy.  It explodes on some observer-frame date $t_0$, and has
-an average incident flux of $m_X(t)$ through filter $X$ that gets to the observer. 
+a nominal incident flux of $m_X(t)$ through filter $X$ that gets to the observatory. 
 
 An imaging survey takes $N$ observations covering the position of the supernova, at times $t_i$ and filters $X_i$, where $i$ is the observation index.
-Transients are searched for in these images, so that the supernova has an opportunity of being detected.
-To first order, the probability of detecting a supernova
-in observation $i$ is a function of the supernova magnitude  $\epsilon_i(m_{X_i}(t_i))$.  The probability of supernova
-discovery using a single detection is
+Transients are searched for in these images, in which the supernova has an opportunity of being detected.
+To first order, the probability of detecting a supernova depends on signal-to-noise, such that
+in observation $i$ the probability depends on supernova magnitude  $\epsilon_i(m_{X_i}(t_i))$.  The probability of supernova
+discovery based on the criterion of a single detection is then
 \begin{equation}
 \epsilon^D = 1- \sum_{i=1}^{N} \left(1-\epsilon_i(m_{X_i}(t_i))\right),
 \end{equation}
@@ -40,15 +40,14 @@ If the supernova is indeed discovered, the date of discovery $t_D$ is stochastic
  
 The imaging survey produces light curves of the supernova, from which (together with redshift) its distance can be determined with precision $\sigma_\mu$.
 A poor distance determination occurs if the imaging survey does not observe the rise or fall of the supernova.  Therefore,
-the supernova is of interest only if its date of explosion $t_0$ occurs from shortly before sky monitoring, to $\sim 2$ supernova-frame months
+the supernova is of interest only if its date of explosion $t_0$ occurs from shortly before sky monitoring, up to $\sim 2$ supernova-frame months
 before the end of the monitoring. 
  
 If the supernova is discovered, there is an opportunity for its targeted DESI observation, and/or the targeted
-observation of its host galaxy when the transient light has faded away.  
-The decision to allocate a DESI fiber on the supernova will be partially based on available information. The available
-information for the supernova are be coordinates, current magnitudes, and possibly a metric of transient type.
-Information on the purported host are coordinates, magnitudes and possibly a photometric redshift.  
-The probability that the supernova gets a DESI observation is $\epsilon^{ST}$, and the probability that there is a  spectrum of the host
+observation of its host galaxy when the transient light has faded away.   The available
+information to inform a DESI fiber allocation for the supernova are its coordinates, current magnitudes, and possibly a metric of transient type.
+Information on the purported host are coordinates, magnitudes, and possibly a (photometric) redshift.  
+The probability that the supernova gets a DESI observation is $\epsilon^{ST}$, and the probability that the host is obsereved
 after the supernova has faded is $\epsilon^{SH}$.
 
 On a particular date of observation,
@@ -56,14 +55,14 @@ DESI has some efficiency of determining the supernova type  $\epsilon^T$ and/or 
 Generally the spectroscopic redshift uncertainty is sufficiently small to render it irrelevant
 for cosmology analysis, and so a successful typing implies a successful redshift.
 
-The probability that the supernova enters a cosmological analysis of spectroscopically confirmed supernova is then
+The probability that the supernova enters a cosmological analysis of spectroscopically confirmed supernovae is then
 \begin{equation}
 \epsilon = \epsilon^D \epsilon^{ST} \epsilon^T,
 \end{equation}
-and the supernova will have an distance precision of $\sigma_\mu$.
+and the supernova will have a distance precision of $\sigma_\mu$.
 
 Given a population of supernovae in the universe, we can realize a subset of supernovae that are used in the cosmological analysis.
-Figure of merits can be calculated.
+Science-impact figure of merits can be calculated from subsets.
 
 \section{Ingredients}
 This Section picks out the ingredients necessary for the analysis, and fiducial choices for those ingredients.
@@ -74,23 +73,29 @@ SN~Ia properties: The supernova is modeled as a SALT2 object.  Given input $t_0$
 which can be queried for its observed magnitudes $m_X(t)$.
 
 Survey: The survey is characterized by the set of observations that cover the supernova.  Each observation as a date, filter, and detection efficiency.
-We consider a simpified LSST survey, as characterized by Table 1 of  \url{https://arxiv.org/pdf/0805.2366.pdf}.  The detection efficiency
-is $\epsilon_i(m_{X_i} \le m_{X, lim}) = 1$,   $\epsilon_i(m_{X_i} > m_{X, lim})=0$, where $m_{X,lim}$ is the $5\sigma$ single-visit limiting
-magnitude.  The dates of observations cycle over the bands with a cadence of two days.
+Surveys are efficiently approximately characterized by their limiting magnitudes and cadence:
+the LSST survey is described by Table 1 of  \url{https://arxiv.org/pdf/0805.2366.pdf} and Equation 1;
+depths of the ZTF survey are described in \url{http://www.ptf.caltech.edu/page/ztf_technical} though the cadence remains ambigious.
 
-Discovery: One observation of $7\sigma$.  We realize whether the supernova is discovered and if so on what date $t_D$.
+Detection and Discovery: A fiducial suggestion for detection and discovery efficiency is a single observation of $S/N \ge 7$:
+ $\epsilon_i(m_{X_i} \le m_{X, lim}) = 1$,   $\epsilon_i(m_{X_i} > m_{X, lim})=0$, where $m_{X,lim}$ is the $7\sigma$ single-visit limiting
+magnitude.  
+We realize whether the supernova is discovered and if so on what date $t_D$.
 
-Using an ensemble of supernovae, we can at this point determine discovery efficiency as a function of redshift $\epsilon^D(z)$ and
+As an interesting intermediate product, we can determine using an ensemble of supernovae the discovery efficiency as a function of redshift $\epsilon^D(z)$, and
 the distribution of the phase of discovery $(t_D-t_0)(z)$.
 
-DESI spectroscopic followup: Optimization of the DESI follow-up strategy is an objective of this work. 
- I think (?) that the DESI will cover its footprint
+DESI spectroscopic survey: I think (?) that the DESI will cover its footprint
 twice in a season, meaning each year there are two possible dates of observation.
 For the moment, we can assume
-the supernovae get a spectrum if it is located in an area covered by DESI $\epsilon^{ST}=1$. 
+the supernovae gets a fiber if it is located in an area covered by DESI, $\epsilon^{S}=1$; optimization of the DESI follow-up strategy is deferred
+for now. 
+The efficiency of DESI to get a supernova type and/or redshift, $\epsilon^{ST}$ and  $\epsilon^{SH}$, are to be
+determined.  The  $\epsilon^{ST}$ is presumably dependent on the transient properties (i.e.\ magnitude) at the
+date of observation.
 
-Spectroscopic success: 
-
+An interesting product will be $dN/dz$ for the number of supernovae that are spectroscopically typed by DESI, and the
+number of supernovae that are not typed but for which there is host redshift.  There are inputs for cosmology figure of merit calculations.
 
 %
 %Often, the supernova discovery conditions are sufficiently demanding so that if discovered, then
