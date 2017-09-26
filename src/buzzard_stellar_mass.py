@@ -63,3 +63,5 @@ if __name__=='__main__':
     print galaxies.shape
     sfr, met, smass = get_derived_quantities(kfile,galaxies['COEFFS'],galaxies['Z'])
     print sfr[0], met[0], smass[0]
+
+# python buzzard_stellar_mass.py /global/homes/j/jderose/lsst/jderose/kcorrect/data/templates/k_nmf_derived.default.fits /global/homes/j/jderose/lsst/jderose/BCC/Chinchilla/Herd/Chinchilla-0/addgalspostprocess/truth/Chinchilla-0_lensed.99.fits
