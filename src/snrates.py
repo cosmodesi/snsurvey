@@ -3,7 +3,7 @@ import numpy
 import scipy.integrate as integrate
 import scipy.stats
 from astropy.cosmology import WMAP9 as cosmo
-
+import matplotlib.pyplot as plt
 
 sr_deg = (numpy.pi/180)**2
 
@@ -166,6 +166,10 @@ class rodney2014:
     snu  = 1e-4*numpy.array([0.269,0.36,0.51,.64,.72,.49])
 
     @staticmethod
+    def rate(z):
+        return ((cosmo.h/.7)**3)*numpy.interp(z,redshift,snu)
+
+    @staticmethod
     def integrand(z):
         return ((cosmo.h/.7)**3)*numpy.interp(z,redshift,snu) *\
             cosmo.differential_comoving_volume(z).value/(1+z)
@@ -180,12 +184,29 @@ class rodney2014:
             cum = cum+result
             print '{:>6.2f} {:>6.2f} {:>10.3f} {:>10.3f}'.format(zbinedge[i-1], zbinedge[i], result,cum)
 
+
+    @staticmethod
+    def plot(zbinedge):
+        ans = []
+        cum=0.
+        for i in xrange(1,len(zbinedge)):
+            result = sr_deg * integrate.quad(rodney2014.integrand, zbinedge[i-1], zbinedge[i])[0]
+            cum = cum+result
+            ans.append(cum)
+        ans= numpy.array(ans)
+        plt.plot(zbinedge[1:],ans)
+        plt.xlabel(r'$z$')
+        plt.yscale("log", nonposy='clip')
+        plt.ylabel(r'Cumulative $N_{{SN Ia}}$ per s.d. per yr')
+        plt.savefig('total.pdf')
+
+
 # dilday2010.tabulate(numpy.arange(0,.5,.1))
-rodney2014.tabulate(numpy.arange(0,1.2,.05))
+# rodney2014.tabulate(numpy.arange(0,1.2,.05))
 
 
 
-print graur15.SNIa(2.7e10,70e-12)
-print graur15.SNIa(7.8e10,.81e-12)
-print graur15.SNII(0.35e10,170e-12)
-print graur15.SNII(0.35e10,1e-12)
+# print graur15.SNIa(2.7e10,70e-12)
+# print graur15.SNIa(7.8e10,.81e-12)
+# print graur15.SNII(0.35e10,170e-12)
+# print graur15.SNII(0.35e10,1e-12)
