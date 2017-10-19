@@ -24,7 +24,7 @@ numbers of SN~Ia discoveries, the numbers of those with good light curves, and t
 The estimates are shown in Figure~\ref{ZTFnum:fig}.  (I presume some SNe with redshifts don't have good light curves.) 
 The DESI footprint
 is 14,000 square degrees.  Assuming that the 961 supernovae with good light curves are distributed uniformly, there will be 0.069
-of these per square degree, or 0.5 per instrumented DESI footprint.
+of these per square degree, or 0.5 per instrumented 7.5 square degree  DESI footprint.
 
 
 \begin{figure}[h]
@@ -72,19 +72,71 @@ of supernovae with good light curves will have a redshift.   By targeting supern
 DESI could increase the number of host-galaxy redshifts be a factor $\sim 2$ at the extreme redshift of $z=0.15$.  The number of targets would be
 $\ll 0.25$ per DESI footprint.
 
-\section{Active Type Ia Supernovae}
-DESI can detect and/or classify active SNe~Ia in its spectra.  The spectrum could be of a primary DESI target, or a secondary target 
-of a transient discovered elsewhere, presumably an imaging survey that is more efficient at discovery.
+\section{Triggered Followup of Active Type Ia Supernovae}
+DESI can classify active SNe~Ia in its spectra, say of
+a transient discovered by an imaging survey and  observed as a DESI secondary target.
+For the nominal target depths of its surveys, the DESI classification efficiency curve approximates 
+a unit step function with perfect classification success/failure when brighter/fainter than some $r$ limiting magnitude.  (Graur and Moustakas are recalculating these.)
 
-Shown in Figure~\ref{cum:fig} are cumulative number densities as a function of redshift of SNe~Ia instantaneously brighter than several $r$ limiting magnitudes. 
-The result is a product of supernova rates, differential volumes, and control times.
+To see how many objects DESI could classify in a single pointing, 
+it is of interest to know how many SNe~Ia are brighter than some magnitude at any given moment.
+Shown in Figure~\ref{cum:fig} are cumulative number densities of SNe~Ia that are instantaneously brighter than a limiting magnitude as a function of redshift.
+Several limiting magnitudes are considered. 
+As the limiting magnitude increases, the number density asymptotes at higher values and redshifts.  For the shallow $r_{lim}=19.5$~mag limit the density plateaus at $z \sim 0.1$ with $2\times 10^{-3}$ objects per square degree or 0.015 per DESI footprint.   For the $r_{lim}=21.5$~mag limit the plateau occurs at $z \sim 0.3$ with $3.4\times 10^{-2}$ objects per square degree or 0.26 per DESI footprint.  Correspondingly, roughly one in 67 (4) DESI pointings will have a measurable SN~Ia in its footprint.
+The majority of transients at these magnitudes and high Galactic latitude will be SNe~Ia, so considering all transients would have only a small increase total rates.
 
 \begin{figure}[h]
 \includegraphics[width=8cm]{../src/cumulative.pdf}
 \centering
-\caption{Cumulative number densities as a function of redshift of SNe~Ia instantaneously brighter than several $r$ limiting magnitudes
+\caption{Cumulative number densities as a function of redshift of SNe~Ia instantaneously brighter than several $r$ limiting magnitudes.
 \label{cum:fig}}
 \end{figure}
 
+A ``passive'' way to trigger DESI observations of active supernovae is to request a fiber for the infrequent transient
+that happens to occur in the field DESI is pointing at.  For an imaging survey that is complete to the DESI 
+$z\sim0.3$ limit, the possible transient yield is then the number of DESI pointings multiplied by the number of objects per pointing.  For 10,000 pointings of the
+main survey this is 2550 SNe~Ia.  Of these 750 would be below $z<0.15$ the discovery completeness limit of ZTF.  
+For 6000 pointings of BGS the number is  90 SNe~Ia.  (The pointings are assumed to be taken with gaps longer than the longest SN~Ia control time.)
+Most supernovae in the field, at higher redshifts, would not get a redshift.  The smaller number of supernovae at low-redshift, who have high apparent brightness
+for a long time, would get a redshift.
+
+An ``active'' way to trigger DESI observations of active supernovae
+is to allocate a telescope pointing and fiber to an active transient.
+The DESI surveys get filled in stochastically following
+the random sky positions of transients.    If a transient occurs in a field that
+has already achieved its full DESI depth, it is not targeted.
+To get an idea of how many pointings could potentially be actively triggered, we examine the cumulative rate of observer-frame SN~Ia explosions as a function of redshift in Figure~\ref{total:fig}.  To $z= 0.3$, the SN~Ia classification limit of DESI, there are $0.3$ SNe~Ia per square degree per year or $2.25$ per footprint per year.
+To $z= 0.2$, the SN~Ia discovery limit of ZTF, there are $0.08$ SNe~Ia per square degree per year or $0.6$ per footprint per year.  A large fraction of these
+SNe beween $0.15<z<0.2$ will not be discovered by ZTF.
+To $z=0.1$, the limit of good light-curves from ZTF, there are $0.02$ SNe~Ia per square degree per year or $0.15$ per footprint per year.  
+Most fields of most imaging surveys cannot be monitored for
+a full year so these numbers serve as an upper bound on the number of discovered supernovae with good light curves. 
+The implication is that over the course of a year season, less than a quarter of DESI pointings will have ZTF SN~Ia transients.
+The majority of fields do not have a transient. Can't predict which will.
+
+\begin{figure}[h]
+\includegraphics[width=8cm]{../src/total.pdf}
+\centering
+\caption{Cumulative rate of observer-frame SN~Ia explosions as a function of redshift. \label{total:fig}}
+\end{figure}
+
+
+
+Suppose the passive observing strategy were attached with a ZTF search. Ideally ZTF can arrange to have good light curves
+for objects with DESI spectroscopic
+classification.  ZTF anticipates 960/5 SNe~Ia per year with good light curves.
+If coordination with ZTF is possible, there would remain $\sim 200/5$ supernovae with good light curves without DESI classification. 
+Let us guesstimate $\sim 600/5$ without.  
+
+If coordination with
+ZTF is not possible, there will be some with a classification by virtue of happening to be active during a DESI pointing and allocated a fiber.
+
+
+
+
+\section{Serendipitous Discovery of Active Type Ia Supernovae}
+DESI can discover active SNe~Ia in the spectrum of a primary DESI target.
+For now wait for properties of DESI galaxy targets and estimate rates based on those.  Figure~{cum:fig}, which shows the total number of 
+supernovae in the field, shows an upper limit to the numbers of supernovae in DESI fibers.
 
 \end{document} 
