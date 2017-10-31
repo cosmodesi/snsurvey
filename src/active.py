@@ -4,6 +4,7 @@ import scipy.integrate as integrate
 import control
 import snrates
 import matplotlib.pyplot as plt
+sr_deg = (numpy.pi/180)**2
 
 def integrand(z, rlim):
     # print z, snrates.rodney2014.rate(z), control.controlTime(z,rlim)
@@ -19,7 +20,8 @@ for lm in lmag:
     ans_=[]
     cum=0.
     for i in xrange(1,len(zbinedge)):
-        result = snrates.sr_deg * integrate.quad(integrand, zbinedge[i-1], zbinedge[i], args=lm, epsabs=1e-4)[0]
+        result = integrate.quad(integrand, zbinedge[i-1], zbinedge[i], args=lm, epsabs=1e-4)[0]
+        result = result * sr_deg
         print lm, zbinedge[i],result
         cum = cum+result
         ans_.append(cum)
@@ -33,7 +35,7 @@ for lm, act in zip(lmag,ans):
 
 plt.legend(loc=2)
 plt.xlabel(r'$z$')
-plt.ylabel(r'Cumulative $N_{{SN Ia}}$ per s.d.')
+plt.ylabel(r'Cumulative $N_{{SN Ia}}$ per s.d. to mag limit')
 plt.savefig('cumulative.pdf')
 
 

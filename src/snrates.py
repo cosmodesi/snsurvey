@@ -180,7 +180,7 @@ class rodney2014:
         print '{:>6s} {:>6s} {:>10s} {:>10s}'.format('zmin','zmax','# bin','# cum')
         print '{:>33s}'.format('1/(sd yr)')
         for i in xrange(1,len(zbinedge)):
-            result = sr_deg * integrate.quad(rodney2014.integrand, zbinedge[i-1], zbinedge[i])[0]
+            result = integrate.quad(rodney2014.integrand, zbinedge[i-1], zbinedge[i])[0] / 41253. # frac of sky in 1 s.d.
             cum = cum+result
             print '{:>6.2f} {:>6.2f} {:>10.3f} {:>10.3f}'.format(zbinedge[i-1], zbinedge[i], result,cum)
 
@@ -190,21 +190,22 @@ class rodney2014:
         ans = []
         cum=0.
         for i in xrange(1,len(zbinedge)):
-            result = sr_deg * integrate.quad(rodney2014.integrand, zbinedge[i-1], zbinedge[i])[0]
+            result = integrate.quad(rodney2014.integrand, zbinedge[i-1], zbinedge[i])[0]
             cum = cum+result
             ans.append(cum)
-        ans= numpy.array(ans)
+        ans= numpy.array(ans)*sr_deg
         plt.plot(zbinedge[1:],ans)
         plt.xlabel(r'$z$')
         plt.yscale("log", nonposy='clip')
         plt.ylabel(r'Cumulative $N_{{SN Ia}}$ per s.d. per yr')
         plt.savefig('total.pdf')
+        plt.clf()
 
 
 # dilday2010.tabulate(numpy.arange(0,.5,.1))
 # rodney2014.tabulate(numpy.arange(0,1.2,.05))
 
-
+rodney2014.plot(numpy.arange(0,.4,.02))
 
 # print graur15.SNIa(2.7e10,70e-12)
 # print graur15.SNIa(7.8e10,.81e-12)
